@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EcoPrompt</title>
+<style>
+:root {
+  --blauw: #2b6ef2;
+  --licht: #f4f7fc;
+  --donker: #121826;
+  --kaart-licht: #ffffff;
+  --kaart-donker: #1f2737;
+  --eco-a: #4caf50;
+  --eco-b: #8bc34a;
+  --eco-c: #ffeb3b;
+  --eco-d: #ffc107;
+  --eco-e: #f44336;
+  font-family: "Segoe UI", sans-serif;
+}
+body { margin:0; background:var(--licht); color:#1b1b1b; transition:.3s; }
+header { background:var(--blauw); color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+h1 { margin:0; font-size:1.5rem; }
+button#mode { background:white; color:var(--blauw); border:none; border-radius:1rem; padding:.4rem .8rem; cursor:pointer; font-weight:600; }
+main { display:flex; flex-direction:column; align-items:center; padding:2rem; }
+textarea { width:90%; max-width:600px; height:100px; padding:1rem; border-radius:.5rem; border:1px solid #ccc; font-size:1rem; resize:none; }
+button#verstuur { background:var(--blauw); color:white; border:none; padding:.7rem 1.4rem; margin-top:1rem; border-radius:.5rem; cursor:pointer; font-size:1rem; }
+.resultaat { display:none; background:var(--kaart-licht); margin-top:2rem; padding:1.5rem; border-radius:.8rem; max-width:600px; width:90%; box-shadow:0 2px 6px rgba(0,0,0,.1); }
+.meter { height:10px; background:#ddd; border-radius:5px; overflow:hidden; margin:.5rem 0 1rem; }
+.meter-fill { height:100%; width:0; background:var(--blauw); transition:width 1s ease-in-out; }
+.badge { display:inline-block; padding:.3rem .8rem; border-radius:1rem; font-weight:bold; color:white; }
+.dark { background:var(--donker); color:white; }
+.dark .resultaat { background:var(--kaart-donker); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🌿 EcoPrompt</h1>
+  <button id="mode">Dark Mode</button>
+</header>
+<main>
+  <h2>Ontdek de impact van je AI-prompt</h2>
+  <textarea id="prompt" placeholder="Bijv. Schrijf een korte samenvatting over klimaatverandering..."></textarea>
+  <button id="verstuur">Verstuur</button>
+  <div id="resultaat" class="resultaat">
+    <h2>Resultaat</h2>
+    <div class="meter"><div class="meter-fill" id="meter"></div></div>
+    <p><strong>AI Antwoord:</strong></p>
+    <p id="antwoord"></p>
+    <p><strong>Energieverbruik:</strong> <span id="energie"></span> Wh</p>
+    <p><strong>CO₂-uitstoot:</strong> <span id="co2"></span> g</p>
+    <p><strong>EcoScore:</strong> <span id="score" class="badge"></span></p>
+  </div>
+</main>
+<footer style="text-align:center;padding:1rem;color:#777;">© 2025 Team EcoPrompt</footer>
+<script>
+const promptInput=document.getElementById("prompt");
+const knop=document.getElementById("verstuur");
+const resDiv=document.getElementById("resultaat");
+const antwoordEl=document.getElementById("antwoord");
+const energieEl=document.getElementById("energie");
+const co2El=document.getElementById("co2");
+const scoreEl=document.getElementById("score");
+const meter=document.getElementById("meter");
+const modeKnop=document.getElementById("mode");
+let dark=false;
+modeKnop.onclick=()=>{dark=!dark;document.body.classList.toggle("dark",dark);modeKnop.textContent=dark?"Light Mode":"Dark Mode";};
+
+function kleur(score){return{"A":"#4caf50","B":"#8bc34a","C":"#ffeb3b","D":"#ffc107","E":"#f44336"}[score];}
+
+knop.onclick=async()=>{
+  const prompt=promptInput.value.trim();
+  if(!prompt)return alert("Voer een prompt in.");
+  antwoordEl.textContent="Even geduld...";
+  resDiv.style.display="block";
+  try{
+    const res=await fetch("https://jouw-domein-of-render-link/api/prompt",{ // wijzig URL na deploy
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({prompt})
+    });
+    const data=await res.json();
+    antwoordEl.textContent=data.antwoord;
+    energieEl.textContent=data.energie;
+    co2El.textContent=data.co2;
+    scoreEl.textContent=data.ecoScore;
+    scoreEl.style.backgroundColor=kleur(data.ecoScore);
+    meter.style.width=Math.min(prompt.length/3,100)+"%";
+  }catch(e){antwoordEl.textContent="Fout bij ophalen van resultaat.";}
+};
+</script>
+</body>
+</html>
