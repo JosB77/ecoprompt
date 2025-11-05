@@ -40,7 +40,7 @@ app.post("/api/prompt", async (req, res) => {
     const ecoScore = bepaalEcoScore(tokens);
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4-turbo",
+      model: "gpt-4o-mini",
       messages: [
         { role: "system", content: "Geef een kort, helder en samenvattend antwoord in het Nederlands." },
         { role: "user", content: prompt },
@@ -63,3 +63,4 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`EcoPrompt-server actief op poort ${PORT}`));
+
