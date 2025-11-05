@@ -10,136 +10,52 @@
   --eco-donker: #1b3022;
   --eco-licht: #f4faf7;
   --blauw: #2b6ef2;
-  --geel: #ffeb3b;
   --eco-a: #4caf50;
   --eco-b: #8bc34a;
   --eco-c: #ffeb3b;
   --eco-d: #ffc107;
   --eco-e: #f44336;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
-body {
-  margin: 0;
-  background-color: var(--eco-licht);
-  color: #1b1b1b;
-  transition: background 0.4s, color 0.4s;
-}
+*{box-sizing:border-box}
+body { margin:0; background:var(--eco-licht); color:#1b1b1b; transition:.3s }
 header {
   background: linear-gradient(90deg, var(--eco-groen), var(--blauw));
-  color: white;
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color:#fff; padding:1.2rem 2rem; display:flex; justify-content:space-between; align-items:center;
 }
-h1 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-button {
-  border: none;
-  cursor: pointer;
-  border-radius: 1rem;
-  padding: 0.6rem 1rem;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-button:hover { transform: scale(1.05); }
-
-.mode-btn {
-  background: white;
-  color: var(--eco-donker);
-}
-.eco-switch {
-  background: #1b1b1b;
-  color: #fff;
-}
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
-}
+h1 { margin:0; font-size:1.8rem }
+button { border:none; cursor:pointer; border-radius:1rem; padding:.6rem 1rem; font-weight:600; transition:.2s }
+button:hover { transform: translateY(-1px) }
+.mode-btn { background:#fff; color:#1b1b1b }
+.eco-switch { background:#1b1b1b; color:#fff }
+main { display:flex; flex-direction:column; align-items:center; padding:2rem; text-align:center }
 textarea {
-  width: 90%;
-  max-width: 650px;
-  height: 120px;
-  padding: 1rem;
-  border-radius: 0.6rem;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  resize: none;
-  background-color: #fff;
-  transition: 0.3s;
+  width: min(650px, 90%); height:120px; padding:1rem; border-radius:.7rem;
+  border:1px solid #cfd8d3; font-size:1rem; resize:none; background:#fff; transition:.2s
 }
-textarea:focus {
-  outline: 2px solid var(--eco-groen);
-}
-button#verstuur {
-  background-color: var(--eco-groen);
-  color: white;
-  margin-top: 1rem;
-  font-size: 1.1rem;
-}
+textarea:focus { outline:2px solid var(--eco-groen); border-color:transparent }
+button#verstuur { background:var(--eco-groen); color:#fff; margin-top:1rem; font-size:1.05rem }
 .resultaat {
-  display: none;
-  margin-top: 2rem;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-  width: 90%;
-  max-width: 650px;
-  animation: fadeIn 0.6s ease;
+  display:none; margin-top:2rem; background:#fff; padding:1.5rem; border-radius:1rem;
+  box-shadow:0 6px 16px rgba(0,0,0,.1); width:min(650px, 90%); text-align:left; animation:fadeIn .5s ease
 }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.meter {
-  height: 12px;
-  background: #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-  margin: 1rem 0;
-}
-.meter-fill {
-  height: 100%;
-  width: 0;
-  background: var(--eco-groen);
-  transition: width 1.2s ease-in-out;
-}
-.badge {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  border-radius: 1rem;
-  font-weight: bold;
-  color: white;
-}
-#ecoScore { font-size: 1.1rem; }
-#gamestatus {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #444;
-}
-.dark {
-  background-color: var(--eco-donker);
-  color: #f4faf7;
-}
-.dark .resultaat {
-  background-color: #253a2f;
-  color: #fff;
-}
-.dark textarea {
-  background-color: #334d3d;
-  color: white;
-}
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  color: #555;
-}
+@keyframes fadeIn { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
+.section-title { margin:.2rem 0 .6rem; font-weight:700 }
+.meter { height:12px; background:#e6ece8; border-radius:6px; overflow:hidden; margin:.6rem 0 1rem }
+.meter-fill { height:100%; width:0; background:var(--eco-groen); transition:width 1.1s ease }
+.badge { display:inline-block; padding:.35rem .75rem; border-radius:1rem; font-weight:700; color:#fff; letter-spacing:.02em }
+.small { font-size:.9rem; color:#4b5a52 }
+ul.compare { margin:.4rem 0 0 1rem; padding:0 }
+ul.compare li { margin:.2rem 0 }
+.note { font-size:.85rem; color:#5b6a62; margin-top:.4rem }
+.dark { background:var(--eco-donker); color:#f4faf7 }
+.dark .resultaat { background:#253a2f; color:#fff }
+.dark textarea { background:#31493d; color:#fff; border-color:#3a5a4b }
+footer{ text-align:center; padding:1.2rem; color:#66756c }
+hr.soft { border:none; height:1px; background:#e6ece8; margin:1rem 0 }
+.dark hr.soft{ background:#335244 }
+.tag { display:inline-block; background:#eaf6ef; color:#1b3b2a; padding:.2rem .6rem; border-radius:.6rem; font-weight:600; margin-left:.5rem }
+.dark .tag{ background:#335244; color:#eaf6ef }
 </style>
 </head>
 <body>
@@ -150,127 +66,142 @@ footer {
     <button id="mode" class="mode-btn">Dark Mode</button>
   </div>
 </header>
+
 <main>
   <h2>Ontdek de impact van je AI-prompts</h2>
-  <p>Vergelijk energieverbruik, CO₂-uitstoot en krijg tips om groener te werken met AI.</p>
+  <p class="small">Krijg een kort AI-antwoord met <span class="tag">energie</span>, <span class="tag">CO₂</span> en <span class="tag">EcoScore</span>.</p>
+
   <textarea id="prompt" placeholder="Bijv. Schrijf een korte samenvatting over klimaatverandering..."></textarea>
   <button id="verstuur">Verstuur</button>
+
   <div id="resultaat" class="resultaat">
-    <h2>Resultaat 🌱</h2>
+    <div class="section-title">Resultaat</div>
     <div class="meter"><div class="meter-fill" id="meter"></div></div>
-    <p><strong>AI Antwoord:</strong></p>
+
+    <p><strong>AI Antwoord</strong></p>
     <p id="antwoord"></p>
+
+    <hr class="soft" />
+
     <p><strong>Energieverbruik:</strong> <span id="energie"></span> Wh</p>
-    <p><strong>CO₂-uitstoot:</strong> <span id="co2"></span> g (<span id="vergelijking"></span>)</p>
+    <p><strong>CO₂-uitstoot:</strong> <span id="co2"></span> g</p>
+    <p class="small"><em>Vergelijkingen (schattingen)</em></p>
+    <ul id="vergelijkingen" class="compare"></ul>
+
+    <hr class="soft" />
+
     <p><strong>EcoScore:</strong> <span id="ecoScore" class="badge"></span></p>
-    <p id="tip"></p>
-    <div id="gamestatus"></div>
+    <p id="tip" class="small"></p>
+
+    <p id="gamestatus" class="small" style="margin-top:.6rem"></p>
   </div>
 </main>
+
 <footer>© 2025 Team EcoPrompt — Duurzaam denken, slim prompten.</footer>
 
 <script>
-const apiBase = "https://ecoprompt.onrender.com"; // jouw backend-link
+const apiBase = "https://ecoprompt.onrender.com"; // jouw backend
 const promptInput = document.getElementById("prompt");
 const knop = document.getElementById("verstuur");
 const resDiv = document.getElementById("resultaat");
 const antwoordEl = document.getElementById("antwoord");
 const energieEl = document.getElementById("energie");
 const co2El = document.getElementById("co2");
-const vergelijkingEl = document.getElementById("vergelijking");
 const ecoScoreEl = document.getElementById("ecoScore");
 const tipEl = document.getElementById("tip");
 const meter = document.getElementById("meter");
+const vergelijkingenEl = document.getElementById("vergelijkingen");
 const modeKnop = document.getElementById("mode");
 const ecoModeKnop = document.getElementById("ecoMode");
 const gamestatus = document.getElementById("gamestatus");
-let dark = false;
-let ecoMode = true;
-let score = 0;
+let dark=false, ecoMode=true, ecoPoints=0;
 
-// Mode toggles
-modeKnop.onclick = () => {
-  dark = !dark;
-  document.body.classList.toggle("dark", dark);
-  modeKnop.textContent = dark ? "Light Mode" : "Dark Mode";
-};
+// UI toggles
+modeKnop.onclick=()=>{dark=!dark;document.body.classList.toggle("dark",dark);modeKnop.textContent=dark?"Light Mode":"Dark Mode";}
+ecoModeKnop.onclick=()=>{ecoMode=!ecoMode;ecoModeKnop.textContent=ecoMode?"Eco-modus":"Power-modus ⚡";ecoModeKnop.style.background=ecoMode?"#1b1b1b":"#ff9800"}
 
-ecoModeKnop.onclick = () => {
-  ecoMode = !ecoMode;
-  ecoModeKnop.textContent = ecoMode ? "Eco-modus" : "Power-modus ⚡";
-  ecoModeKnop.style.background = ecoMode ? "#1b1b1b" : "#ff9800";
-};
+// helpers
+const kleur = s=>({A:"#4caf50",B:"#8bc34a",C:"#ffeb3b",D:"#ffc107",E:"#f44336"}[s]);
+const tipVoor = s=>({
+  A:"Uitstekend! 🌱 Je werkt supergroen.",
+  B:"Mooi werk! Misschien kan het nog iets korter.",
+  C:"Goed bezig – probeer je prompt wat compacter te maken.",
+  D:"Je prompt is lang; korter = minder energie.",
+  E:"Maak het flink korter 💡 – dat scheelt veel energie."
+}[s]);
 
-// Kleuren per EcoScore
-function kleur(score) {
-  return {
-    A: "#4caf50",
-    B: "#8bc34a",
-    C: "#ffeb3b",
-    D: "#ffc107",
-    E: "#f44336"
-  }[score];
+function humanTime(sec){
+  if (sec<60) return `${Math.round(sec)} sec`;
+  const m = Math.floor(sec/60), s = Math.round(sec%60);
+  return s?`${m} min ${s} sec`:`${m} min`;
 }
 
-// Duurzaamheidstips
-function tipVoorScore(score) {
-  const tips = {
-    A: "Uitstekend! 🌱 Je werkt supergroen!",
-    B: "Mooi werk! Misschien kan het nog iets korter.",
-    C: "Goed bezig, maar probeer je prompt iets compacter te maken.",
-    D: "Je prompt is wat lang — kortere prompts verbruiken minder energie.",
-    E: "Probeer echt korter te schrijven 💡, dit bespaart flink energie!"
-  };
-  return tips[score];
+// Vergelijkingen op basis van energie (Wh) en CO2 (g)
+function buildComparisons(wh, g){
+  // aannames (grove schattingen):
+  const laptopChargerW = 60;         // 60W oplader
+  const ledW = 9;                    // 9W LED-lamp
+  const phoneFullWh = 12;            // ~12Wh volle smartphone-lading
+  const searchCO2g = 0.2;            // ~0,2 g CO2 per zoekopdracht
+
+  const laptopSeconds = wh / laptopChargerW * 3600;      // tijd bij 60W
+  const ledMinutes = wh / ledW * 60;                     // minuten 9W lamp
+  const phonePct = Math.min(wh / phoneFullWh * 100, 999);// %
+  const searches = g / searchCO2g;                       // aantal zoekopdrachten
+
+  return [
+    `≈ ${humanTime(laptopSeconds)} <strong>laptop opladen</strong> (60 W)`,
+    `≈ ${Math.round(ledMinutes)} min een <strong>9 W LED-lamp</strong> laten branden`,
+    `≈ ${phonePct.toFixed(1)}% van een <strong>smartphone-lading</strong> (~12 Wh)`,
+    `≈ ${Math.max(1, Math.round(searches))} <strong>Google-zoekopdrachten</strong> (±0,2 g CO₂/stuk)`
+  ];
 }
 
-// Gamification
-function updateGamestatus(scoreLetter) {
-  const punten = { A: 5, B: 4, C: 3, D: 2, E: 1 }[scoreLetter];
-  score += punten;
-  gamestatus.innerHTML = `🌟 Je hebt nu <strong>${score}</strong> EcoPoints!`;
+function updateGamification(scoreLetter){
+  const punten = {A:5,B:4,C:3,D:2,E:1}[scoreLetter] || 0;
+  ecoPoints += punten;
+  gamestatus.innerHTML = `🏅 EcoPoints: <strong>${ecoPoints}</strong> (+${punten})`;
 }
 
 knop.onclick = async () => {
   const prompt = promptInput.value.trim();
   if (!prompt) return alert("Voer een prompt in.");
+
+  // animaties en start
   antwoordEl.textContent = "Even geduld...";
   resDiv.style.display = "block";
+  meter.style.width = "0%";
 
-  try {
-    const res = await fetch(`${apiBase}/api/prompt`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt })
+  try{
+    const res = await fetch(`${apiBase}/api/prompt`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({ prompt })
     });
     const data = await res.json();
-    if (data.error) {
-      antwoordEl.textContent = data.error;
-      return;
-    }
+    if (data.error){ antwoordEl.textContent = data.error; return; }
 
-    // Animatie promptmeter
-    const tokens = prompt.length;
-    meter.style.width = Math.min(tokens / 3, 100) + "%";
+    // promptmeter op basis van promptlengte
+    meter.style.width = Math.min(prompt.length/3, 100) + "%";
 
-    // Bereken CO₂ vergelijking
-    const co2 = parseFloat(data.co2);
-    let vergelijking = "";
-    if (co2 < 0.5) vergelijking = "≈ 5 sec laptop opladen";
-    else if (co2 < 1) vergelijking = "≈ 10 sec laptop opladen";
-    else if (co2 < 2) vergelijking = "≈ 30 sec laptop opladen";
-    else vergelijking = "≈ 3 min laptop opladen";
-
-    // Resultaten invullen
+    // vul hoofdresultaten
     antwoordEl.textContent = data.antwoord;
     energieEl.textContent = data.energie;
     co2El.textContent = data.co2;
-    vergelijkingEl.textContent = vergelijking;
+
+    // vergelijkingen
+    vergelijkingenEl.innerHTML = "";
+    const comps = buildComparisons(parseFloat(data.energie), parseFloat(data.co2));
+    comps.forEach(c=>{
+      const li=document.createElement("li"); li.innerHTML=c; vergelijkingenEl.appendChild(li);
+    });
+
+    // EcoScore + tips + punten
     ecoScoreEl.textContent = data.ecoScore;
     ecoScoreEl.style.backgroundColor = kleur(data.ecoScore);
-    tipEl.textContent = tipVoorScore(data.ecoScore);
-    updateGamestatus(data.ecoScore);
-  } catch (e) {
+    tipEl.textContent = tipVoor(data.ecoScore);
+    updateGamification(data.ecoScore);
+  }catch(e){
     antwoordEl.textContent = "Fout bij ophalen van resultaat.";
   }
 };
