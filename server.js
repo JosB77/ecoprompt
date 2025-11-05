@@ -1,11 +1,3 @@
-{
-  "name": "ecoprompt",
-  "version": "1.0.0",
-  "description": "EcoPrompt - AI zonder verspilling",
-  "type": "module",
-  "main": "server.js",
-  ...
-}
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -61,4 +53,5 @@ app.post("/api/prompt", async (req, res) => {
 app.listen(process.env.PORT || 3000, () =>
   console.log(`EcoPrompt-server actief op poort ${process.env.PORT || 3000}`)
 );
+
 
