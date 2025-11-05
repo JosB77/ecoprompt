@@ -2,10 +2,12 @@
   "name": "ecoprompt",
   "version": "1.0.0",
   "description": "EcoPrompt - AI zonder verspilling",
-  "main": "server.mjs",
   "type": "module",
+  "main": "server.js",
   "engines": { "node": ">=18" },
-  "scripts": { "start": "node server.mjs" },
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
