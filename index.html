@@ -74,7 +74,7 @@ knop.onclick=async()=>{
   antwoordEl.textContent="Even geduld...";
   resDiv.style.display="block";
   try{
-    const res=await fetch("https://jouw-domein-of-render-link/api/prompt",{ // wijzig URL na deploy
+    const res=await fetch("https://ecoprompt.onrender.com/",{ // wijzig URL na deploy
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({prompt})
@@ -91,3 +91,4 @@ knop.onclick=async()=>{
 </script>
 </body>
 </html>
+
