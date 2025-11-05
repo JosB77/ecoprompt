@@ -2,6 +2,14 @@
   "name": "ecoprompt",
   "version": "1.0.0",
   "description": "EcoPrompt - AI zonder verspilling",
+  "type": "module",
+  "main": "server.js",
+  ...
+}
+{
+  "name": "ecoprompt",
+  "version": "1.0.0",
+  "description": "EcoPrompt - AI zonder verspilling",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -13,3 +21,4 @@
     "cors": "^2.8.5"
   }
 }
+
