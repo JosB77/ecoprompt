@@ -4,21 +4,15 @@
   "description": "EcoPrompt - AI zonder verspilling",
   "type": "module",
   "main": "server.js",
-}
-{
-  "name": "ecoprompt",
-  "version": "1.0.0",
-  "description": "EcoPrompt - AI zonder verspilling",
-  "main": "server.js",
+  "engines": { "node": ">=18" },
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "openai": "^4.0.0",
-    "cors": "^2.8.5"
+    "openai": "^4.0.0"
   }
 }
-
 
